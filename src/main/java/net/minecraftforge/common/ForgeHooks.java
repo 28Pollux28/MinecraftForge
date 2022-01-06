@@ -976,11 +976,6 @@ public class ForgeHooks
         return null;
     }
 
-    public static void onAdvancement(ServerPlayer player, Advancement advancement)
-    {
-        MinecraftForge.EVENT_BUS.post(new AdvancementEvent(player, advancement));
-    }
-
     /**
      * Hook to fire {@link ItemAttributeModifierEvent}. Modders should use {@link ItemStack#getAttributeModifiers(EquipmentSlot)} instead.
      */

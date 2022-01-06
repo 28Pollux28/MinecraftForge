@@ -30,6 +30,8 @@ import com.mojang.authlib.GameProfile;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import com.mojang.brigadier.CommandDispatcher;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.server.players.PlayerList;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.projectile.FireworkRocketEntity;
@@ -119,6 +121,9 @@ import net.minecraftforge.event.entity.living.LivingPackSizeEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent.AllowDespawn;
 import net.minecraftforge.event.entity.living.ZombieEvent.SummonAidEvent;
+import net.minecraftforge.event.entity.player.AdvancementEvent.AdvancementEarnEvent;
+import net.minecraftforge.event.entity.player.AdvancementEvent.AdvancementProgressEvent;
+import net.minecraftforge.event.entity.player.AdvancementEvent.ProgressType;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
@@ -884,5 +889,15 @@ public class ForgeEventFactory
     public static void onPostServerTick()
     {
         MinecraftForge.EVENT_BUS.post(new TickEvent.ServerTickEvent(TickEvent.Phase.END));
+    }
+
+    public static void onAdvancementEarnedEvent(Player player, Advancement earned)
+    {
+        MinecraftForge.EVENT_BUS.post(new AdvancementEarnEvent(player, earned));
+    }
+
+    public static void onAdvancementProgressedEvent(Player player, Advancement progressed, AdvancementProgress advancementProgress, String criterion, ProgressType progressType)
+    {
+        MinecraftForge.EVENT_BUS.post(new AdvancementProgressEvent(player, progressed, advancementProgress, criterion, progressType));
     }
 }
