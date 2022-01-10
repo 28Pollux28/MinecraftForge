@@ -1,6 +1,6 @@
 /*
  * Minecraft Forge
- * Copyright (c) 2016-2021.
+ * Copyright (c) 2016-2022.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -24,6 +24,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.MinecraftForge;
 
 /**
+ * @deprecated Consider using {@link AdvancementEvents}.
+ * <br>
  * This event is fired when a player gets an advancement.
  * <br>
  * This event is not {@link net.minecraftforge.eventbus.api.Cancelable}.<br>
@@ -32,6 +34,7 @@ import net.minecraftforge.common.MinecraftForge;
  * <br>
  * This event is fired on the {@link MinecraftForge#EVENT_BUS}.
  */
+@Deprecated()//todo : remove and use AdvancementEvents instead in 1.19
 public class AdvancementEvent extends PlayerEvent
 {
     private final Advancement advancement;
