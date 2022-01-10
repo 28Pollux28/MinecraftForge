@@ -1,6 +1,6 @@
 /*
  * Minecraft Forge
- * Copyright (c) 2016-2021.
+ * Copyright (c) 2016-2022.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -977,6 +977,10 @@ public class ForgeHooks
         return null;
     }
 
+    /**
+     * @deprecated See {@linkplain ForgeEventFactory}
+     */
+    @Deprecated //todo: remove and use ForgeEventFactory.onAdvancementEarned instead in 1.19
     public static void onAdvancement(ServerPlayer player, Advancement advancement)
     {
         MinecraftForge.EVENT_BUS.post(new AdvancementEvent(player, advancement));
